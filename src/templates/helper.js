@@ -11,6 +11,6 @@ function sanitize(str) {
   }
 
 module.exports = {
-    sanitize,
+    sanitize ,
     validate
 }

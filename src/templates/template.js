@@ -1,4 +1,4 @@
-const { sanitize, validate } = require('./templates/helper.js');
+const { sanitize, validate } = require('./helper');
 
 //Overall layout
 
@@ -69,11 +69,11 @@ function signUpForm(title, errors = {}, values = {}) {
   <form  method="POST">
   
       <label for="name">Name <span aria-hidden="true">*</span></label>
-      <input id="name" name="name" value= '${sanitize(values.name)}' required>
+      <input id="name" name="name" value= '' required>
       ${validate(errors.name)}
   
       <label for="email">Email <span aria-hidden="true">*</span></label>
-      <input type="email" id="email" name="email" value= '${sanitize(values.email)}' required>
+      <input type="email" id="email" name="email" value= '' required>
       ${validate(errors.email)}
   
       <label for="password">Password <span aria-hidden="true">*</span></label>
@@ -95,7 +95,7 @@ function loginForm(errors = {}, values = {}) {
     <h1>Log in</h1>
         <form  method="POST">
             <label for="email">Email <span aria-hidden="true">*</span></label>
-            <input type="email" id="email" name="email" value='${sanitize(values.email)}' required>
+            <input type="email" id="email" name="email" value='' required>
             ${validate(errors.email)}
 
             <label for="password">Password <span aria-hidden="true">*</span></label>
@@ -162,7 +162,7 @@ function loginForm(errors = {}, values = {}) {
       `;
   }
 
-  function myFood(foodList, id) {
+  function myFood(foodList, id, errors ={}, values ={}) {
     const foods = foodList.map(
         (food) =>/*HTML*/ `
         <div class="allFood-container">
@@ -180,38 +180,31 @@ function loginForm(errors = {}, values = {}) {
       ${navBar(id)}
       <h1>Submit a picture of your food!</h1>
       <div class="container">
-        ${addfoodForm(errors = {}, values = {})}
+      <form method="POST" class="food-form">
+      <label for="dishName">Dish name<span aria-hidden="true">*</span></label>
+      <input type="text" id="dishName" name="dishName" value='${sanitize(values.dish_name)}'>
+      ${validate(errors.dish_name)}
+
+      <label for="foodDesc">Tell us about the dish<span aria-hidden="true">*</span></label>
+      <input type="text" id="foodDesc" name="foodDesc" value='${sanitize(values.food_desc)}'>
+      ${validate(errors.food_desc)}
+
+      <label for="foodImg">Food Image<span aria-hidden="true">*</span></label>
+      <input id="foodImg" name="foodImg" type="file" >
+      ${validate(errors.foodImg)}
+      
+      <label for="sharing">How would you rate this dish?  
+      <span aria-hidden="true">*</span>
+      <input id="sharing" name="sharing" type="">
+      </label>
+      
+      <button>Submit</button>
+      </form>
       <ul>
           ${foods.join("")}
       </ul>
       </div>
       `;
-  }
-
-  function addfoodForm (errors = {}, values = {}){
-    const foodForm = /*HTML*/`
-    <form method="POST" class="food-form">
-        <label for="dishName">Dish name<span aria-hidden="true">*</span></label>
-        <input type="text" id="dishName" name="dishName" value='${sanitize(values.dish_name)}'>
-        ${validate(errors.dish_name)}
-
-        <label for="foodDesc">Tell us about the dish<span aria-hidden="true">*</span></label>
-        <input type="text" id="foodDesc" name="foodDesc" value='${sanitize(values.food_desc)}'>
-        ${validate(errors.food_desc)}
-
-        <label for="foodImg">Food Image<span aria-hidden="true">*</span></label>
-        <input id="foodImg" name="foodImg" type="file" >
-        ${validate(errors.foodImg)}
-        
-        <label for="sharing">Do you want to share with other users?  
-        <span aria-hidden="true">*</span>
-        <input id="sharing" name="sharing" type="checkbox">
-        </label>
-        
-        <button>Submit</button>
-    </form>
-    `
-    return foodForm;
   }
 
   module.exports = {
