@@ -8,7 +8,7 @@ const get_all_foods = db.prepare(/*sql*/ `
     rating,
     image_path
     FROM foods
-    `);
+`);
 
 function getAllFoods() {
     return get_all_foods.all();
@@ -24,7 +24,7 @@ const get_user_foods = db.prepare(/*sql*/ `
     image_path
     FROM foods
     WHERE id = ?
-    `);
+`);
 
 function getUserFoods(user_id) {
     return get_user_foods.all(user_id);
