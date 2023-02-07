@@ -7,4 +7,5 @@ const cookies = cookieParser(process.env.COOKIE_SECRET); //process.env.COOKIE_SE
 
 server.use(cookies); //pass cookieParser to all reoutes with req object
 
+
 module.exports = server;
