@@ -12,7 +12,7 @@
     "type": "git",
     "url": "git+https://github.com/Psydwinder/Server-side-app-test.git"
   },
-  "author": "Niete Ratilal",
+  "author": "Niete Ratilal, Karol Olechno, Gal K Jones",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Psydwinder/Server-side-app-test/issues"
@@ -22,9 +22,13 @@
     "bcryptjs": "^2.4.3",
     "better-sqlite3": "^8.0.1",
     "cookie-parser": "^1.4.6",
-    "eslint": "^8.33.0",
-    "express": "^4.18.2",
-    "nodemon": "^2.0.20",
-    "prettier": "^2.8.3"
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+      "eslint": "^8.33.0",
+      "nodemon": "^2.0.20",
+      "prettier": "^2.8.3"
+    }
   }
-}
+
+
