@@ -51,7 +51,7 @@ function post(request, response) {
         sameSite: "lax",
         httpOnly: true,
       });
-      response.redirect("/allFoods");
+      response.redirect("/all-foods");
     }
   });
 }
