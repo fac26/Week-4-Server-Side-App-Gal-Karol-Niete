@@ -1,16 +1,16 @@
 function sanitize(str) {
-    return str.replace(/</g, "&lt");
+  return str.replace(/</g, "&lt");
+}
+
+function validate(message) {
+  if (message) {
+    return `<span style="color: red">${message}</span>`;
+  } else {
+    return "";
   }
-  
-  function validate(message) {
-    if (message) {
-      return `<span style="color: red">${message}</span>`;
-    } else {
-      return "";
-    }
-  }
+}
 
 module.exports = {
-    sanitize ,
-    validate
-}
+  sanitize,
+  validate,
+};

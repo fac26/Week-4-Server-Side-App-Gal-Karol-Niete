@@ -1,9 +1,9 @@
-const { sanitize, validate } = require('./helper');
+const { sanitize, validate } = require("./helper");
 
 //Overall layout
 
-function layout ({title,content}){
-    return /*HTML*/`  
+function layout({ title, content }) {
+  return /*HTML*/ `  
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -19,11 +19,11 @@ function layout ({title,content}){
         </main>
     </body>
     </html>`;
-    }
+}
 
 //Nav Bar layout
 function navBar(id) {
-    return /*html */ `
+  return /*html */ `
       <header>
         <div class="container">
           <nav class ="nav_container"> 
@@ -37,16 +37,14 @@ function navBar(id) {
         </div>
       </header>
       `;
-  }
-
-
+}
 
 //Home layout
 
-function Home (){
-    return /*HTML*/` 
+function home() {
+  return /*HTML*/ ` 
     <div class="home-container">
-    <h1>I &hearts; food!</h1>
+    <h1>I :heart: food!</h1>
     
     <div class ="img_container">
        <img src="../public/images/donut.png" alt="Donut image">
@@ -57,12 +55,12 @@ function Home (){
         <a href="/log-in">Log In</a>
     </div>
     </div>
-    `
+  `;
 }
 
 // Sign up form layout
 function signUpForm(title, errors = {}, values = {}) {
-    return /*html*/ `
+  return /*html*/ `
    <div class="signUp-container" >  
   
     <h1>${title}</h1>
@@ -84,12 +82,12 @@ function signUpForm(title, errors = {}, values = {}) {
   </form>
   </div>
       `;
-  }
+}
 
-//Login form  
+//Login form
 
 function loginForm(errors = {}, values = {}) {
-    return /*html*/ `
+  return /*html*/ `
     <div class="logIn-container" >  
   
     <h1>Log in</h1>
@@ -104,12 +102,12 @@ function loginForm(errors = {}, values = {}) {
         
         <button>Log in</button>
         </form>
-  </div>
+    </div>
       `;
-  }
+}
 
-  function errorPage() {
-    return /* html */ `
+function errorPage() {
+  return /* html */ `
     <div class="home-container">
      <h1>Login Failed</h1>
      <p>Something went wrong. Please enter the correct email or password.</p>
@@ -119,10 +117,10 @@ function loginForm(errors = {}, values = {}) {
      <a href="/sign-up"> Sign up</a>
      </div>
      </div>`;
-  }
+}
 
-  function existingUser() {
-    return /*html */ `
+function existingUser() {
+  return /*html */ `
       <div class="home-container">
       <h1>This email already exists on our database</h1>
       <p>Please either sign up or try to log in</p>
@@ -133,13 +131,11 @@ function loginForm(errors = {}, values = {}) {
       </div>
       </div>
     `;
-  }
+}
 
- 
-
-  function allFood(foodList, id) {
-    const foods = foodList.map(
-        (food) =>/*HTML*/ `
+function allFood(foodList, id) {
+  const foods = foodList.map(
+    (food) => /*HTML*/ `
         <div class="allFood-container">
           <li class="food-post">
             <h2>${food.dish_name}</h2>
@@ -150,8 +146,8 @@ function loginForm(errors = {}, values = {}) {
           </li>
         </div>
         `
-      );
-    return /*html */ `
+  );
+  return /*html */ `
       ${navBar(id)}
       <h1>All Food</h1>
       <div class="container">
@@ -160,11 +156,11 @@ function loginForm(errors = {}, values = {}) {
       </ul>
       </div>
       `;
-  }
+}
 
-  function myFood(foodList, id, errors ={}, values ={}) {
-    const foods = foodList.map(
-        (food) =>/*HTML*/ `
+function myFood(foodList, id, errors = {}, values = {}) {
+  const foods = foodList.map(
+    (food) => /*HTML*/ `
         <div class="allFood-container">
           <li class="food-post">
             <h2>${food.dish_name}</h2>
@@ -175,45 +171,47 @@ function loginForm(errors = {}, values = {}) {
           </li>
         </div>
         `
-      );
-      return /*html */ `
+  );
+
+  return /*html */ `
       ${navBar(id)}
       <h1>Submit a picture of your food!</h1>
       <div class="container">
       <form method="POST" class="food-form">
       <label for="dishName">Dish name<span aria-hidden="true">*</span></label>
-      <input type="text" id="dishName" name="dishName" value='${sanitize(values.dish_name)}'>
+      <input type="text" id="dishName" name="dishName" value='${sanitize(
+        values.dish_name
+      )}'>
       ${validate(errors.dish_name)}
 
       <label for="foodDesc">Tell us about the dish<span aria-hidden="true">*</span></label>
-      <input type="text" id="foodDesc" name="foodDesc" value='${sanitize(values.food_desc)}'>
+      <input type="text" id="foodDesc" name="foodDesc" value='${sanitize(
+        values.food_desc
+      )}'>
       ${validate(errors.food_desc)}
 
-      <label for="foodImg">Food Image<span aria-hidden="true">*</span></label>
-      <input id="foodImg" name="foodImg" type="file" >
-      ${validate(errors.foodImg)}
-      
-      <label for="sharing">How would you rate this dish?  
-      <span aria-hidden="true">*</span>
-      <input id="sharing" name="sharing" type="">
-      </label>
-      
-      <button>Submit</button>
-      </form>
-      <ul>
-          ${foods.join("")}
-      </ul>
-      </div>
-      `;
-  }
+        <label for="foodImg">Food Image<span aria-hidden="true">*</span></label>
+        <input id="foodImg" name="foodImg" type="file" >
+        ${validate(errors.foodImg)}
+        
+        <label for="sharing">Do you want to share with other users?  
+        <span aria-hidden="true">*</span>
+        <input id="sharing" name="sharing" type="checkbox">
+        </label>
+        
+        <button>Submit</button>
+    </form>
+    `;
+  return foodForm;
+}
 
-  module.exports = {
-    layout,
-    Home,
-    signUpForm,
-    loginForm,
-    allFood,
-    myFood,
-    errorPage,
-    existingUser,
-  };
+module.exports = {
+  layout,
+  home,
+  signUpForm,
+  loginForm,
+  allFood,
+  myFood,
+  errorPage,
+  existingUser,
+};

@@ -1,12 +1,12 @@
-const { layout, Home } = require("../templates/template");
 
-//sign in page / home route
+const { layout, home } = require("../templates/template");
 
 function get(request, response) {
-  const content = Home();
-  const title = "I love foods!";
-  const body = layout({ title, content });
-  response.send(body);
+	const title = "Home | I :heart: Food!";
+	const content = home();
+	const html = layout({ title, content });
+	response.send(html);
 }
 
 module.exports = { get };
+
