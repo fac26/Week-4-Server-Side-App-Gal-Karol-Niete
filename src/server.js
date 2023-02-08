@@ -12,5 +12,6 @@ const login = require("./routes/login");
 
 server.get("/", home.get);
 server.get("/log-in", login.get);
+server.post("/log-in", bodyParser, login.post);
 
 module.exports = server;
