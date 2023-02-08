@@ -1,3 +1,5 @@
+const { getSession } = require('../model/session');
+
 function sanitize(str) {
   return str.replace(/</g, '&lt');
 }

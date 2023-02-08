@@ -1,5 +1,4 @@
 const express = require('express');
-const { getSession } = require('./model/session');
 const cookieParser = require('cookie-parser');
 const bodyParser = express.urlencoded({ extended: false });
 const { sessions } = require('./templates/helper');
