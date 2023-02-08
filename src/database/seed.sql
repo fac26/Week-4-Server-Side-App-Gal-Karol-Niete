@@ -7,6 +7,10 @@ INSERT INTO users (id,username, email, hash, created_at) VALUES
 
 ON CONFLICT DO NOTHING;
 
-INSERT INTO foods (id,dish_name, food_desc, user_id,rating, image_path
+INSERT INTO foods (id,dish_name, food_desc, user_id,rating) VALUES
+    (1, 'Chocolate Bombé', 'An explosion of flavour and chocolate', 1, 5)
 
+ON CONFLICT DO NOTHING;
+
+COMMIT;
  
