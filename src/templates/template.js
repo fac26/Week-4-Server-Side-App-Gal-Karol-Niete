@@ -138,11 +138,11 @@ function allFood(foodList, id) {
     (food) => /*HTML*/ `
         <div class="allFood-container">
           <li class="food-post">
-            <h2>${food.dish_name}</h2>
-            <p>${food.food_desc}</p>
-              <div class="image_container">
-              <img src="${food.image_path}" alt="${food.dish_name}" />
-              </div>
+          <div class="image_container">
+          <img src="${food.image_path}" alt="${food.dish_name}" />
+          </div> 
+          <h2>${food.dish_name}</h2>
+            <p>${food.food_desc}</p> 
           </li>
         </div>
         `
@@ -178,6 +178,11 @@ function myFood(foodList, id, errors = {}, values = {}) {
       <h1>Submit a picture of your food!</h1>
       <div class="container">
       <form method="POST" class="food-form">
+      
+      <label for="foodImg">Food Image<span aria-hidden="true">*</span></label>
+        <input id="foodImg" name="foodImg" type="file" >
+        ${validate(errors.foodImg)}
+      
       <label for="dishName">Dish name<span aria-hidden="true">*</span></label>
       <input type="text" id="dishName" name="dishName" value='${sanitize(
         values.dish_name
@@ -190,14 +195,11 @@ function myFood(foodList, id, errors = {}, values = {}) {
       )}'>
       ${validate(errors.food_desc)}
 
-        <label for="foodImg">Food Image<span aria-hidden="true">*</span></label>
-        <input id="foodImg" name="foodImg" type="file" >
-        ${validate(errors.foodImg)}
+        
         
         <button>Submit</button>
     </form>
     `;
-  return foodForm;
 }
 
 module.exports = {
