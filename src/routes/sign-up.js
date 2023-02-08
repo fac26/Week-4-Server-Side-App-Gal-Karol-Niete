@@ -21,8 +21,8 @@ function post(request, response) {
   }
 
   bcrypt.hash(password, 12).then((hash) => {
-    const user = createUser(name, email, hash).id;
-    const session_id = createSession(user);
+    const user = createUser(name, email, hash);
+    const session_id = createSession(user.id);
     console.log(session_id);
     response.cookie("sid", session_id, {
       signed: true,
