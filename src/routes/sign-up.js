@@ -15,7 +15,7 @@ function get(request, response) {
 function post(request, response) {
   const { name, email, password } = request.body;
   const userinDB = getUserByEmail(email);
-  if (existingUser) return response.send(existingUser());
+  if (userinDB) return response.send(existingUser());
   if (!name || !email || !password) {
     response.status(400).send("<h1>Login Failed.</h1>");
   }
