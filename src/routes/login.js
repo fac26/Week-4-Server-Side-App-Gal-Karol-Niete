@@ -1,5 +1,4 @@
 const { layout, loginForm, errorPage } = require("../templates/template");
-const { sanitize } = require("../templates/helper");
 const { getUserByEmail } = require("../model/user");
 const { createSession, getSession } = require("../model/session");
 const bcrypt = require("bcryptjs");
@@ -14,14 +13,14 @@ function get(request, response) {
   const session = getSession(sid);
 
   if (session) {
-    response.redirect("/allFoods");
+    response.redirect("/all-foods");
   }
   response.send(body);
 }
 
 function post(request, response) {
   const { email, password } = request.body;
-  const user = getUserByEmail(sanitize(email));
+  const user = getUserByEmail(email);
   const errors = {};
   const title = "Log in";
   if (!user) {
