@@ -21,8 +21,17 @@ function sessions(req, res, next) {
   next();
 }
 
+function confirmLoggedOut(request, response, next) {
+  const isLoggedIn = request.session;
+  if (!isLoggedIn) {
+    response.redirect('/');
+  }
+  next();
+}
+
 module.exports = {
   sanitize,
   validate,
   sessions,
+  confirmLoggedOut,
 };
