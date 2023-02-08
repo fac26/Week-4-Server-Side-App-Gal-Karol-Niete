@@ -194,11 +194,6 @@ function myFood(foodList, id, errors = {}, values = {}) {
         <input id="foodImg" name="foodImg" type="file" >
         ${validate(errors.foodImg)}
         
-        <label for="sharing">Do you want to share with other users?  
-        <span aria-hidden="true">*</span>
-        <input id="sharing" name="sharing" type="checkbox">
-        </label>
-        
         <button>Submit</button>
     </form>
     `;
