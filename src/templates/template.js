@@ -1,4 +1,4 @@
-const { sanitize, validate } = require("./helper");
+const { sanitize, validate } = require('./helper');
 
 //Overall layout
 
@@ -54,6 +54,22 @@ function home() {
         <a href="/sign-up">Sign Up</a>
         <a href="/log-in">Log In</a>
     </div>
+    </div>
+  `;
+}
+
+//Home user logged in layout
+
+function homeLoggedIn() {
+  return /*HTML*/ ` 
+    <div class="home-container">
+    <h1>I :heart: food!</h1>
+    
+    <div class ="img_container">
+       <img src="../public/images/donut.png" alt="Donut image">
+    </div>
+
+    <form method="POST" action="/log-out"><button class="Button">Log Out</button></form>
     </div>
   `;
 }
@@ -152,7 +168,7 @@ function allFood(foodList, id) {
       <h1>All Food</h1>
       <div class="container">
       <ul class="food-list">
-          ${foods.join("")}
+          ${foods.join('')}
       </ul>
       </div>
       `;
@@ -205,6 +221,7 @@ function myFood(foodList, id, errors = {}, values = {}) {
 module.exports = {
   layout,
   home,
+  homeLoggedIn,
   signUpForm,
   loginForm,
   allFood,
