@@ -1,3 +1,4 @@
+
 const { layout, home } = require("../templates/template");
 
 function get(request, response) {
@@ -8,3 +9,4 @@ function get(request, response) {
 }
 
 module.exports = { get };
+
