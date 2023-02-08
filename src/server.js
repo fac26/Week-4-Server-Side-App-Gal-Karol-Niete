@@ -4,6 +4,7 @@ const { sessions } = require('./templates/helper');
 
 const cookies = cookieParser(process.env.COOKIE_SECRET);
 const bodyParser = express.urlencoded({ extended: false });
+const server = express();
 
 server.use(cookies);
 server.use(sessions);
@@ -11,8 +12,6 @@ server.use(sessions);
 const home = require('./routes/home');
 const login = require('./routes/login');
 const signUp = require('./routes/sign-up');
-
-const server = express();
 
 server.get('/', home.get);
 server.get('/sign-up', signUp.get);
