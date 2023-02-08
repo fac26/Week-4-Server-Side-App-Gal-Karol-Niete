@@ -7,9 +7,11 @@ const cookies = cookieParser(process.env.COOKIE_SECRET); //process.env.COOKIE_SE
 
 server.use(cookies); //pass cookieParser to all reoutes with req object
 
-
+const homepage = require('./routes/home');
 const login = require("./routes/login");
 
-server.get("/login", login.get);
+
+server.get('/', homepage.get);
+server.get("/log-in", login.get);
 
 module.exports = server;
