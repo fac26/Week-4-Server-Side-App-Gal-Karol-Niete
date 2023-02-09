@@ -179,11 +179,11 @@ function myFood(foodList, id, errors = {}, values = {}) {
     (food) => /*HTML*/ `
         <div class="allFood-container">
           <li class="food-post">
-            <h2>${food.dish_name}</h2>
-            <p>${food.food_desc}</p>
-              <div class="image_container">
+          <div class="image_container">
               <img src="${food.image_path}" alt="${food.dish_name}" />
-              </div>
+              </div>  
+          <h2>${food.dish_name}</h2>
+            <p>${food.food_desc}</p>
           </li>
         </div>
         `
