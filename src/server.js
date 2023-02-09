@@ -11,6 +11,7 @@ server.use(sessions);
 
 const home = require("./routes/home");
 const login = require("./routes/login");
+const logout = require("./routes/logout");
 const signUp = require("./routes/sign-up");
 const allFood = require("./routes/allFoods");
 
@@ -20,5 +21,6 @@ server.get("/log-in", login.get);
 server.get("/all-foods", allFood.get);
 server.post("/sign-up", bodyParser, signUp.post);
 server.post("/log-in", bodyParser, login.post);
+server.post("/log-out", logout.post);
 
 module.exports = server;

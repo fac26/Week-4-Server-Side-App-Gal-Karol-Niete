@@ -1,10 +1,10 @@
-const { layout, home, homeLoggedIn } = require('../templates/template');
-const { getSession } = require('../model/session');
+const { layout, home, homeLoggedIn } = require("../templates/template");
+const { getSession } = require("../model/session");
 
 function get(request, response) {
   const sid = request.signedCookies.sid;
   const session = getSession(sid);
-  const title = 'Home | I :heart: Food!';
+  const title = "I \u2665 Food!";
 
   if (session) {
     const content = homeLoggedIn();
